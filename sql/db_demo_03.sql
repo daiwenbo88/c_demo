@@ -272,4 +272,5 @@ select rand(3) from dual;
 select rand(6) from dual;
 
 
-
+select current_time from dual;
+select TIMESTAMPDIFF(SECOND, '1970-1-1 8:0:0', NOW());

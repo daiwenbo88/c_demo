@@ -1,11 +1,32 @@
 # mysql
 
+#### docker 启动mysql
+
+```shell
+ docker run -itd --name mysql-docker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+ #-name mysql-docker：设置容器名称为mysql-docker，可自定义为任意名称。
+ #-p 3306:3306：映射容器服务的 3306 端口到宿主机的 3306 端口，外部主机可以直接通过 宿主机ip:3306 访问   到 MySQL 的服务。
+ #MYSQL_ROOT_PASSWORD=123456：设置 MySQL 服务 root 用户的密码。
+docker restart mysql # 重新启动mysql
+docker ps #查看运行的容器
+docker ps -l # 查询所有的容器
+```
+
+
+
 **命令行连接到mysql**
 
 ```shell
+#创建 mysql containers
+docker run -itd --name mysql-docker -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 mysql
+
 docker ps
 docker exec -it mysql-docker bash # name =mysql-docker 
 mysql -uroot -p123456 #-u 用户 -p密码
+SELECT @@tx_isolation; #查看数据库事务隔离具备
+show databases；#查看数据库
+show engines；#查看数据量引擎
+use databases;#连接数据库
 quit #退出
 exit #退出bash
 
